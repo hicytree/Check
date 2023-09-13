@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from '../firebase'
 import { LogBox } from 'react-native';
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
-LogBox.ignoreAllLogs();//Ignore all log notifications
+LogBox.ignoreAllLogs(); // Ignore all log notifications
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('')
@@ -15,7 +15,7 @@ const LoginScreen = () => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                navigation.replace("Home")
+                navigation.navigate("Home")
             }
         });
 
@@ -36,6 +36,8 @@ const LoginScreen = () => {
         .then((userCredentials) => {
             const user = userCredentials.user;
             console.log("Logged in as: " + user.email);
+            setEmail('');
+            setPassword('');
         })
         .catch((error) => alert(error.message))
     }
