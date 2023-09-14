@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Text, KeyboardAvoidingView, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, KeyboardAvoidingView, TextInput, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from '../firebase'
 import { LogBox } from 'react-native';
@@ -47,6 +47,10 @@ const LoginScreen = () => {
             style={styles.container} 
             behavior="padding"
         >
+            <View style={styles.checkView}>
+                <Image source={require('../assets/check.png')} style={styles.checkLogo} />  
+                <Text style={styles.checkText}>Check</Text>
+            </View>
             <View style={styles.inputContainer}>
                 <TextInput
                     placeholder="Email"
@@ -98,15 +102,17 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         borderRadius: 10,
         marginTop: 5,
+        fontFamily: "Avenir-Book",
+        fontSize: 15
     },
     buttonContainer: {
         width: '60%',
         justifyContent: 'center',
         alignItems: "center",
-        marginTop: 40,
+        marginTop: 30,
     },
     button: {
-        backgroundColor: "#0782F9",
+        backgroundColor: "#424342ff",
         width: '100%',
         padding: 15,
         borderRadius: 10,
@@ -115,17 +121,35 @@ const styles = StyleSheet.create({
     buttonText: {
         color: 'white',
         fontWeight: 700,
-        fontSize: 16,
+        fontSize: 17,
+        fontFamily: "Avenir-Book"
     },
     buttonOutline: {
         backgroundColor: "white",
         marginTop: 5,
-        borderColor: "#0782F9",
+        borderColor: "#424342ff",
         borderWidth: 2
     },
     buttonOutlineText: {
-        color: '#0782F9',
+        color: '#424342ff',
         fontWeight: 700,
-        fontSize: 16,
-    }
+        fontSize: 17,
+        fontFamily: "Avenir-Book"
+    },
+    checkLogo: {
+        width: 175,
+        height: 175,
+        justifyContent: "center",
+        borderRadius: 55,
+        marginBottom: 5
+    },
+    checkView: {
+        marginBottom: 50,
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    checkText: {
+        fontSize: 30,
+        fontFamily: "Avenir-Book"
+    }  
 })
